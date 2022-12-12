@@ -25,3 +25,11 @@ C:\Users\sshamov\source\repos\Phonebook\Phonebook\Phonebook\obj\Debug\net6.0\ref
 C:\Users\sshamov\source\repos\Phonebook\Phonebook\Phonebook\obj\Debug\net6.0\Phonebook.pdb
 C:\Users\sshamov\source\repos\Phonebook\Phonebook\Phonebook\obj\Debug\net6.0\Phonebook.genruntimeconfig.cache
 C:\Users\sshamov\source\repos\Phonebook\Phonebook\Phonebook\obj\Debug\net6.0\ref\Phonebook.dll
+C:\MyProjects\Phonebook\Phonebook\obj\Debug\net6.0\Phonebook.csproj.AssemblyReference.cache
+C:\MyProjects\Phonebook\Phonebook\obj\Debug\net6.0\Phonebook.GeneratedMSBuildEditorConfig.editorconfig
+C:\MyProjects\Phonebook\Phonebook\obj\Debug\net6.0\Phonebook.AssemblyInfoInputs.cache
+C:\MyProjects\Phonebook\Phonebook\obj\Debug\net6.0\Phonebook.AssemblyInfo.cs
+C:\MyProjects\Phonebook\Phonebook\obj\Debug\net6.0\Phonebook.csproj.CoreCompileInputs.cache
+C:\MyProjects\Phonebook\Phonebook\obj\Debug\net6.0\Phonebook.dll
+C:\MyProjects\Phonebook\Phonebook\obj\Debug\net6.0\refint\Phonebook.dll
+C:\MyProjects\Phonebook\Phonebook\obj\Debug\net6.0\Phonebook.pdb
