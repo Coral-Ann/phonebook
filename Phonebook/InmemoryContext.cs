@@ -6,9 +6,9 @@ namespace Phonebook
     {
         public InmemoryContext(DbContextOptions options) : base(options) { }
 
-        DbSet<Contact> Contacts { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
 
-        DbSet<Phone> Phones { get; set; }
+        public DbSet<Phone> Phones { get; set; }
 
     }
 }
