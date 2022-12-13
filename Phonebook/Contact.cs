@@ -9,5 +9,7 @@ namespace Phonebook
         
         public string Name { get; set; }
 
+        public List<Phone> Phones { get; set; }
+
     }
 }
