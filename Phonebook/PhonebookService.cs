@@ -13,7 +13,16 @@
 
         public Task AddContact(string name, List<string> phones)
         {
-            throw new NotImplementedException();
+            var contact = new Contact
+            {
+                Name = name,
+                Phones = phones.Select(p => new Phone() { PhoneNumber = p }).ToList()
+            };
+
+            _context.Contacts.Add(contact);
+            _context.SaveChanges();
+
+            return Task.CompletedTask;
         }
 
         public Task AddPhonesToContact(string name, List<string> phones)
