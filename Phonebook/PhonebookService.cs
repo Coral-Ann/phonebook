@@ -1,4 +1,6 @@
-﻿namespace Phonebook
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace Phonebook
 {
     public class PhonebookService
     {
@@ -8,8 +10,6 @@
         {
             _context = context;
         }
-
-        // TODO: Implement the following methods
 
         public Task AddContact(string name, List<string> phones)
         {
@@ -25,22 +25,33 @@
             return Task.CompletedTask;
         }
 
-        public Task AddPhonesToContact(string name, List<string> phones)
+        public async Task AddPhonesToContact(string name, List<string> phones)
         {
-            throw new NotImplementedException();
+            var contact = await _context.Contacts.Where(c => c.Name == name).FirstOrDefaultAsync();
+            if (contact != null) 
+            {
+                foreach (var phone in phones)
+                {
+                    var dbPhone = new Phone
+                    {
+                        ContactId = contact.ContactId,
+                        PhoneNumber = phone
+                    };
+                    _context.Add(dbPhone);
+                }
+                _context.SaveChanges();
+            }
+        }    
+
+        public async Task<bool> ContactExists(string name)
+        {
+            var contact = await _context.Contacts.Where(c => c.Name == name).FirstOrDefaultAsync();
+            return contact != null;
         }
 
-        public Task<bool> ContactExists(string name)
+        public async Task<Contact?> GetContact(string name)
         {
-            throw new NotImplementedException();
-        }
-
-        // TODO: For this method, you have to design a class to output the required data,
-        // which is: contact name and list of contact phones
-
-        public Task<Contact> GetContact(string name)
-        {
-            throw new NotImplementedException();
+             return await _context.Contacts.Where(c => c.Name == name).FirstOrDefaultAsync();
         }
     }
 }

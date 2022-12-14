@@ -72,7 +72,7 @@ static async Task DisplayContact(PhonebookService service)
     {
         Console.WriteLine(contact.Name);
         foreach (var phone in contact.Phones)
-            Console.WriteLine(phone);
+            Console.WriteLine(phone.PhoneNumber);
     }
 }
 

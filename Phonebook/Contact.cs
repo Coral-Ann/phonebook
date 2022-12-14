@@ -7,9 +7,9 @@ namespace Phonebook
         [Key]
         public int ContactId { get; set; }
         
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
-        public List<Phone> Phones { get; set; }
+        public IList<Phone> Phones { get; set; } = new List<Phone>();
 
     }
 }
