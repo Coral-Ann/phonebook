@@ -11,7 +11,7 @@ namespace Phonebook
             _context = context;
         }
 
-        public Task AddContact(string name, List<string> phones)
+        public async Task AddContact(string name, List<string> phones)
         {
             var contact = new Contact
             {
@@ -19,39 +19,28 @@ namespace Phonebook
                 Phones = phones.Select(p => new Phone() { PhoneNumber = p }).ToList()
             };
 
-            _context.Contacts.Add(contact);
-            _context.SaveChanges();
-
-            return Task.CompletedTask;
+            await _context.Contacts.AddAsync(contact);
+            await _context.SaveChangesAsync();
         }
 
         public async Task AddPhonesToContact(string name, List<string> phones)
         {
             var contact = await _context.Contacts.Where(c => c.Name == name).FirstOrDefaultAsync();
-            if (contact != null) 
-            {
-                foreach (var phone in phones)
+            if (contact == null)
+                return;
+
+            await _context.AddRangeAsync(phones.Select(p => new Phone
                 {
-                    var dbPhone = new Phone
-                    {
-                        ContactId = contact.ContactId,
-                        PhoneNumber = phone
-                    };
-                    _context.Add(dbPhone);
-                }
-                _context.SaveChanges();
-            }
-        }    
+                    ContactId = contact.ContactId,
+                    PhoneNumber = p
+                }));
+            await _context.SaveChangesAsync();
+        }  
 
         public async Task<bool> ContactExists(string name)
-        {
-            var contact = await _context.Contacts.Where(c => c.Name == name).FirstOrDefaultAsync();
-            return contact != null;
-        }
+            => await _context.Contacts.AnyAsync(c => c.Name == name);
 
         public async Task<Contact?> GetContact(string name)
-        {
-             return await _context.Contacts.Where(c => c.Name == name).FirstOrDefaultAsync();
-        }
+            => await _context.Contacts.Where(c => c.Name == name).FirstOrDefaultAsync();
     }
 }

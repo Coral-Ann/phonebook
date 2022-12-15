@@ -56,8 +56,10 @@ static async Task AddPhones(PhonebookService service)
         Console.WriteLine($"Contact {name} not found");
         return;
     }
+
     var phones = new List<string>();
     InputPhones(phones);
+
     await service.AddPhonesToContact(name, phones);
     Console.WriteLine($"Phones added to contact {name}");
 }

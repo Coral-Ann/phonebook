@@ -64,6 +64,10 @@
               "target": "Package",
               "version": "[4.2.1, )"
             },
+            "Shouldly": {
+              "target": "Package",
+              "version": "[4.1.0, )"
+            },
             "coverlet.collector": {
               "target": "Package",
               "version": "[3.1.2, )"
